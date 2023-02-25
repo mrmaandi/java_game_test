@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.mygdx.game.MyGdxGame;
 
 import static com.mygdx.game.config.GameConfig.SCREEN_HEIGHT;
 import static com.mygdx.game.config.GameConfig.SCREEN_WIDTH;
