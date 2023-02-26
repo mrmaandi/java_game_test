@@ -16,6 +16,10 @@ public enum Emote {
         this.width = SpriteUtil.calculateSpriteWidth(texture.getHeight(), texture.getWidth());
     }
 
+    public String getTextValue() {
+        return this.textValue;
+    }
+
     public final String textValue;
     public final Texture texture;
     public final float width;

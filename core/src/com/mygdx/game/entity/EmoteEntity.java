@@ -7,20 +7,25 @@ import com.badlogic.gdx.math.Vector2;
 import static com.mygdx.game.config.GameConfig.*;
 
 public class EmoteEntity implements GameEntity {
-    private final SpriteBatch batch;
     private final Emote emote;
-    public final Vector2 position = new Vector2();
+    public final Vector2 position;
+    private final SpriteBatch batch;
+
+    public Emote getEmote() {
+        return emote;
+    }
 
     public EmoteEntity(Emote emote) {
         this.emote = emote;
+        int inBoundaryWidth = SCREEN_WIDTH - (int) this.emote.width;
+        position = new Vector2((float) Math.random() * inBoundaryWidth, SCREEN_HEIGHT);
         batch = new SpriteBatch();
-        init();
     }
 
-    private void init() {
-        int inBoundaryWidth = SCREEN_WIDTH - (int) emote.width;
-        position.x = (float) Math.random() * inBoundaryWidth;
-        position.y = SCREEN_HEIGHT;
+    @Override
+    public void move() {
+        float newY = position.y - ENTITY_SPEED * Gdx.graphics.getDeltaTime();
+        setPosition(position.x, newY);
     }
 
     @Override
@@ -40,11 +45,5 @@ public class EmoteEntity implements GameEntity {
     public void dispose() {
         batch.dispose();
         emote.texture.dispose();
-    }
-
-    @Override
-    public void move() {
-        float newY = position.y - ENTITY_SPEED * Gdx.graphics.getDeltaTime();
-        setPosition(position.x, newY);
     }
 }

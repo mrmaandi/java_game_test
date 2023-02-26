@@ -55,4 +55,15 @@ public class StateManager {
         }
         DESTROY_SOUND.play();
     }
+
+    public static void onValidInput(String text) {
+        for (Iterator<EmoteEntity> iter = entities.iterator(); iter.hasNext(); ) {
+            EmoteEntity nextEntity = iter.next();
+            if (nextEntity.getEmote().getTextValue().equals(text)) {
+                iter.remove();
+                StateManager.score += 10;
+            }
+        }
+        DESTROY_SOUND.play();
+    }
 }
