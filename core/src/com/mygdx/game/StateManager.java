@@ -20,6 +20,7 @@ public class StateManager {
     public static final Sound DESTROY_SOUND = Gdx.audio.newSound(Gdx.files.internal("sounds/destroy.wav"));
     public static final List<EmoteEntity> entities = new ArrayList<>();
     public static long lastEntitySpawnTime;
+    public static int score;
 
     public static void init() {
         lastEntitySpawnTime = TimeUtils.millis();
@@ -48,6 +49,7 @@ public class StateManager {
             EmoteEntity nextEntity = iter.next();
             if (nextEntity.position.y <= 0) {
                 iter.remove();
+                score -= 10;
                 // nextEntity.dispose();
             }
         }
